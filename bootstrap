@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DOTFILES_DIR=$HOME/dotfiles 
+
+cd ${DOTFILES_DIR}
+
+mkdir -pv $HOME/.backup/.ssh
+test -f $HOME/.vimrc           && mv $HOME/.vimrc         $HOME/.backup/.vimrc
+test -f $HOME/.bash_profile    && mv $HOME/.bash_profile  $HOME/.backup/.bash_profile
+test -f $HOME/.bashrc          && mv $HOME/.bashrc        $HOME/.backup/.bashrc
+test -f $HOME/.bash_logout     && mv $HOME/.bash_logout   $HOME/.backup/.bash_logout
+
+# shimlink dotfiles
+ln -s $DOTFILES_DIR/.vimrc          $HOME/.vimrc
+ln -s $DOTFILES_DIR/.bash_profile   $HOME/.bash_profile
+ln -s $DOTFILES_DIR/.bash_logout    $HOME/.bash_logout
+ln -s $DOTFILES_DIR/.bashrc         $HOME/.bashrc
